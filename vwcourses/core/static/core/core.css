@@ -1,0 +1,20 @@
+.black-gradient {
+  background: #555;
+  background: -webkit-linear-gradient(to right, black, #555);
+  background: -o-linear-gradient(to right, black, #555);
+  background: -moz-linear-gradient(to right, black, #555);
+  background: linear-gradient(to right, black, #555);
+}
+
+.color-white { color: white; }
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+nav .brand-logo { padding-left: 10px; }
+footer .input-field {color:white;}
+.parallax-size-header { height: 400px; }
+.parallax-size-footer { height: 100px; }
+footer.page-footer { margin-top: 0; }

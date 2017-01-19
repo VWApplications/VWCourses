@@ -32,6 +32,7 @@ ratings:
     - "**.js"
     - "**.py"
     - "**.css"
+    - "**.html"
 exclude_paths:
   - "manage.py"
   - "**/migrations/**.py"

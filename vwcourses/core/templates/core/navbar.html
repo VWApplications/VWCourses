@@ -1,0 +1,19 @@
+{% load i18n %}
+ <div class="navbar-fixed">
+   <nav>
+     <div class="nav-wrapper black-gradient">
+       <a href="{% url 'core:home' %}" class="brand-logo"><i class="material-icons">home</i>{% trans 'VWCourses' %}</a>
+       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+       <ul class="right hide-on-med-and-down">
+         <li class="active"><a href="#home"><i class="material-icons left">home</i>{% trans 'Home' %}</a></li>
+         <li><a href="#courses"><i class="material-icons left">school</i>{% trans 'Courses' %}</a></li>
+         <li><a href="#footer"><i class="material-icons left">contact_mail</i>{% trans 'Contact' %}</a></li>
+       </ul>
+       <ul class="side-nav" id="mobile-demo">
+         <li><a href="#home"><i class="material-icons left">home</i>{% trans 'Home' %}</a></li>
+         <li><a href="#courses"><i class="material-icons left">school</i>{% trans 'Courses' %}</a></li>
+         <li><a href="#footer"><i class="material-icons left">contact_mail</i>{% trans 'Contact' %}</a></li>
+       </ul>
+     </div>
+   </nav>
+</div>
