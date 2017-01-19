@@ -1,0 +1,19 @@
+language: python
+
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+
+install:
+  - pip install django
+  - pip install Pillow
+  - pip install codeclimate-test-reporter
+
+script:
+  - python manage.py makemigrations
+  - python manage.py migrate
+  - python manage.py test
+
+after_sucess:
+    - CODECLIMATE_REPO_TOKEN=430ff687598744f1ac73ac30cd272c0a3de5e6ece19b6d2aa704151c0a2c444d codeclimate-test-reporter
