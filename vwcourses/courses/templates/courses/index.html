@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block css %}{% static 'courses/css/courses.css' %}{% endblock %}
+{% block title %}Lista de Cursos{% endblock %}
+{% block main %}
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 card-panel grey lighten-2 z-depth-3">
+        <h4 class="header">Listagem de cursos do VWCourses</h4>
+        <p class="flow-text">Abaixo há a lista de cursos disponiveis na plataforma</p>
+      </div>
+    </div>
+    {% for course in courses %}
+      <div class="row">
+        <div class="col s12 m5">
+          {% if course.image %}
+            <img class="materialboxed" width="100%" src="{{course.image.url}}" alt="{{course}}" />
+          {% else %}
+            <img class="materialboxed" width="100%" src="{% static 'courses/img/default_img.png' %}" alt="{{course}}" />
+          {% endif %}
+        </div>
+        <div class="col s12 m7">
+          <h4 class="header"><a href="{{ course.get_absolute_url }}">{{course.name}}</a></h4>
+          <div class="flow-text truncate">{{course.description}}</div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="row">
+        <div class="col s12 m12">
+          <p class="flow-text">Não há cursos disponiveis</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

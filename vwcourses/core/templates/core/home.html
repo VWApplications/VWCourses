@@ -1,6 +1,9 @@
 {% extends 'core/base.html' %}
 {% load i18n %}
 {% block title %}Página principal{% endblock %}
+{% block footer-link %}
+  <a href="#footer"><i class="material-icons left">contact_mail</i>{% trans 'Contact' %}</a>
+{% endblock %}
 {% block main %}
   <div class="parallax-container parallax-size-header" id="home">
     <div class="parallax"><img src="http://www.iescamp.com.br/files/imagens/noticias/outros.jpg" /></div>
@@ -20,7 +23,7 @@
           <div class="col s12 l7">
             <h4 class="header">Cursos</h4>
             <p class="flow-text">Conheça todos os cursos disponibilizados</p>
-            <a class="waves-effect waves-light btn"><i class="material-icons left">loyalty</i>{% trans 'Know more' %}</a>
+            <a class="waves-effect waves-light btn" href="{% url 'courses:index' %}"><i class="material-icons left">loyalty</i>{% trans 'Know more' %}</a>
           </div>
         </div>
       </div>
@@ -41,7 +44,5 @@
       </div>
     </div>
   </div>
-  <div class="parallax-container parallax-size-footer">
-    <div class="parallax"><img src="http://www.iescamp.com.br/files/imagens/noticias/outros.jpg" /></div>
-  </div>
+  <footer>{% include 'core/footer.html' %}</footer>
 {% endblock %}
