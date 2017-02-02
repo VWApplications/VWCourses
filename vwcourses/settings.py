@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'vwcourses.core',
     'vwcourses.courses',
+    'vwcourses.accounts',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,8 @@ EMAIL_HOST_USER = 'victorhad@gmail.com'
 EMAIL_HOST_PASSWORD = '****'
 EMAIL_PORT = 587
 CONTACT_EMAIL = 'victorhad@gmail.com'
+
+# AUTH
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'core:home'
+LOGOUT_URL = 'accounts:logout'
