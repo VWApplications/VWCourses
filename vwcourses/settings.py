@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vwcourses.core',
+    'vwcourses.courses',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +120,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'Nome <victorhad@gmail.com>'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'victorhad@gmail.com'
+EMAIL_HOST_PASSWORD = '****'
+EMAIL_PORT = 587
+CONTACT_EMAIL = 'victorhad@gmail.com'
