@@ -7,11 +7,23 @@
        <ul class="right hide-on-med-and-down">
          <li class="{% block active-home %}{% endblock %}"><a href="{% url 'core:home' %}"><i class="material-icons left">home</i>{% trans 'Home' %}</a></li>
          <li class="{% block active-index %}{% endblock %}"><a href="{% url 'courses:index' %}"><i class="material-icons left">school</i>{% trans 'Courses' %}</a></li>
+         {% if user.is_authenticated %}
+            <li><a href="{% url 'accounts:profile' %}"><i class="material-icons left">person_pin</i>{% trans 'Profile' %}</a></li>
+            <li><a href="{% url 'accounts:logout' %}"><i class="material-icons left">perm_identity</i>{% trans 'Logout' %}</a></li>
+         {% else %}
+            <li><a href="{% url 'accounts:login' %}"><i class="material-icons left">perm_identity</i>{% trans 'Login' %}</a></li>
+         {% endif %}
          <li>{% block footer-link %}{% endblock %}</li>
        </ul>
        <ul class="side-nav" id="mobile-demo">
          <li><a href="{% url 'core:home' %}"><i class="material-icons left">home</i>{% trans 'Home' %}</a></li>
          <li><a href="{% url 'courses:index' %}"><i class="material-icons left">school</i>{% trans 'Courses' %}</a></li>
+         {% if user.is_authenticated %}
+            <li><a href="{% url 'accounts:profile' %}"><i class="material-icons left">person_pin</i>{% trans 'Profile' %}</a></li>
+            <li><a href="{% url 'accounts:logout' %}"><i class="material-icons left">perm_identity</i>{% trans 'Logout' %}</a></li>
+         {% else %}
+            <li><a href="{% url 'accounts:login' %}"><i class="material-icons left">perm_identity</i>{% trans 'Login' %}</a></li>
+         {% endif %}
        </ul>
      </div>
    </nav>

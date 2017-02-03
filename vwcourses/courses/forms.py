@@ -6,6 +6,7 @@ class ContactCourseForm(forms.Form):
   name = forms.CharField(label='Nome', max_length=100)
   email = forms.EmailField(label='Email')
   message = forms.CharField(label='Mensagem', widget=forms.Textarea)
+
   def send_message(self, course):
     template = 'courses/contact_email.html'
     subject = '[%s] Contato' % course

@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block main %}
+  <div class="row">
+    <div class="nav-wrapper">
+      <div class="col s12">
+        {% block profile %}
+        <a href="{% url 'accounts:profile' %}" class="breadcrumb teal-text text-darken-4">{% trans 'My Profile' %}</a>
+        {% endblock %}
+      </div>
+    </div>
+    <div class="col s4">
+      <div class="card-panel">
+        <ul class="collection with-header">
+          <li class="collection-header"><h4>{% trans 'My Courses' %}</h4></li>
+          <li class="collection-item"><a href="#">Curso 01</a></li>
+          <li class="collection-item"><a href="#">Curso 02</a></li>
+          <li class="collection-header"><h4>{% trans 'My Account' %}</h4></li>
+          <li class="collection-item"><a href="{% url 'accounts:edit' %}">{% trans 'Edit Account' %}</a></li>
+          <li class="collection-item"><a href="{% url 'accounts:edit_password' %}">{% trans 'Edit Password' %}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col s6">
+      {% block profile_content %}
+        <h3>{% trans 'My Profile' %}</h3>
+        <div class="divider"></div>
+        <p><b>{% trans 'User' %}</b>: {{user}}</p>
+        <p>{{user.email}}</p>
+        {% endblock %}
+    </div>
+  </div>
+{% endblock %}
