@@ -17,6 +17,15 @@
   </head>
   <body>
     <header>{% include 'core/navbar.html' %}</header>
-    <main>{% block main %}{% endblock %}</main>
+    <main>
+      {% if messages %}
+        <div class="card-panel teal lighten-2">
+          {% for message in messages %}
+            <span>{{message}}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% block main %}{% endblock %}
+    </main>
   </body>
 </html>

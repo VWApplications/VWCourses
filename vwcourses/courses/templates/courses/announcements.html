@@ -1,0 +1,28 @@
+{% extends 'accounts/profile.html' %}
+{% load i18n %}
+{% block profile %}
+  {{block.super}}
+  <a href="{% url 'courses:announcements' course.slug %}" class="breadcrumb teal-text text-darken-4">{{course}}</a>
+{% endblock %}
+{% block menu_options %}
+  {% include 'courses/menu_options.html' %}
+  {{ block.super }}
+{% endblock %}
+{% block profile_content %}
+  <div class="row">
+    <div class="col s12">
+      <h2>{{course}}</h2>
+      {% for announcement in announcements %}
+        <div class="card-panel">
+          <h4><a href="{% url 'courses:show_announcement' course.slug announcement.id %}">{{announcement.title}}</a></h4>
+          <p>{{announcement.content|linebreaks}}</p>
+          {% with qtd_comments=announcement.comments.count %}
+          <a href="{% url 'courses:show_announcement' course.slug announcement.id %}#comments">{{qtd_comments}} Comentario{{qtd_comments|pluralize}}</a>
+          {% endwith %}
+        </div>
+      {% empty %}
+        <p class="flow-text">Nenhum anúncio criado</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

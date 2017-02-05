@@ -1,0 +1,43 @@
+{% extends 'accounts/profile.html' %}
+{% load i18n %}
+{% block profile %}
+  {{block.super}}
+  <a href="{% url 'courses:announcements' course.slug %}" class="breadcrumb teal-text text-darken-4">{{course}}</a>
+  <a href="{% url 'courses:show_announcement' course.slug announcement.id %}" class="breadcrumb teal-text text-darken-4">{{announcement}}</a>
+{% endblock %}
+{% block menu_options %}
+  {% include 'courses/menu_options.html' %}
+  {{ block.super }}
+{% endblock %}
+{% block profile_content %}
+  <div class="row">
+    <div class="col s12">
+      <h2>{{course}}</h2>
+      <div class="card-panel">
+        <h4>{{announcement.title}}</h4>
+        <p>{{announcement.content|linebreaks}}</p>
+      </div>
+      {% for comment in announcement.comments.all %}
+        <ul class="collection with-header">
+          <li class="collection-header"><h4>Comentários</h4></li>
+          <li class="collection-item">
+            <b>{{comment.user}}</b> disse à {{comment.created_at|timesince}} atrás <br />
+            {{comment.comment|linebreaksbr}}
+          </li>
+        </ul>
+      {% empty %}
+        <p class="flow-text">Nenhum comentário encontrado</p>
+      {% endfor %}
+      <h4 id="comments">Comentar</h4>
+      <form method="post">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col s12">
+            {{form.as_p}}
+          </div>
+        </div>
+        <button class="waves-effect waves-light btn" type="submit"><i class="material-icons left">send</i>Comentar</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

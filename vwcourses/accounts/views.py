@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 from django.contrib.auth.decorators import login_required
+from vwcourses.courses.models import Enrollment
 from .forms import RegisterForm, EditAccountForm, PasswordResetForm
 from .models import PasswordReset
 
@@ -49,7 +51,8 @@ def reset_password_confirm(request, key):
 @login_required
 def profile(request):
   template = 'accounts/profile.html'
-  return render(request, template)
+  context = {}
+  return render(request, template, context)
 
 
 @login_required
@@ -59,8 +62,8 @@ def edit(request):
   form = EditAccountForm(request.POST or None, instance=request.user)
   if form.is_valid():
     form.save()
-    form = EditAccountForm(instance=request.user)
-    context['success'] = True
+    messages.success(request, 'Os dados da sua conta foram alterados com sucesso')
+    return redirect('accounts:profile')
   context['form'] = form
   return render(request, template, context)
 
@@ -72,6 +75,7 @@ def edit_password(request):
   form = PasswordChangeForm(data=request.POST or None, user=request.user)
   if form.is_valid():
     form.save()
-    context['success'] = True
+    messages.success(request, 'A senha foi alterada com sucesso')
+    return redirect('accounts:login')
   context['form'] = form
   return render(request, template, context)
