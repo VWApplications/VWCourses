@@ -1,0 +1,30 @@
+{% extends 'accounts/profile.html' %}
+{% load i18n %}
+{% block profile %}
+  {{block.super}}
+  <a href="{% url 'courses:announcements' course.slug %}" class="breadcrumb teal-text text-darken-4">{{course}}</a>
+  <a href="{% url 'courses:cancel_enrollment' course.slug %}" class="breadcrumb teal-text text-darken-4">Cancelar Inscrição</a>
+{% endblock %}
+{% block menu_options %}
+  {% include 'courses/menu_options.html' %}
+  {{ block.super }}
+{% endblock %}
+{% block profile_content %}
+  <div class="row">
+    <div class="col s12">
+      <h4 class="flow-text center-align">Cancelamento da inscrição do curso: {{enrollment.course}}</h4>
+      <form action="" method="post" accept-charset="utf-8">
+        {% csrf_token %}
+        <p class="center-align">Você deseja realmente cancelar a inscrição deste curso?</p>
+        <div class="row">
+          <div class="col s6">
+            <button class="btn left" type="submit">Sim</button>
+          </div>
+          <div class="col s6">
+            <a class="btn right" href="{% url 'courses:announcements' enrollment.course.slug %}">Não</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% load i18n %}
+<li class="collection-header center-align"><h4>{{course}}</h4></li>
+<li class="collection-item"><a href="{% url 'courses:lessons' course.slug %}">{% trans 'Classes and Materials' %}</a></li>
+<li class="collection-item"><a href="#">{% trans 'Informations' %}</a></li>
+<li class="collection-item"><a href="{% url 'courses:announcements' course.slug %}">{% trans 'Ennouncements' %}</a></li>
+<li class="collection-item"><a href="#">{% trans 'Discussion Forum' %}</a></li>
+<li class="collection-item"><a href="{% url 'courses:cancel_enrollment' course.slug %}">{% trans 'Cancel Enrollment' %}</a></li>

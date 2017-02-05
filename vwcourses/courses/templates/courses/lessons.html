@@ -1,0 +1,27 @@
+{% extends 'accounts/profile.html' %}
+{% load i18n %}
+{% block profile %}
+  {{block.super}}
+  <a href="{% url 'courses:announcements' course.slug %}" class="breadcrumb teal-text text-darken-4">{{course}}</a>
+  <a href="{% url 'courses:lessons' course.slug %}" class="breadcrumb teal-text text-darken-4">Aulas</a>
+{% endblock %}
+{% block menu_options %}
+  {% include 'courses/menu_options.html' %}
+  {{ block.super }}
+{% endblock %}
+{% block profile_content %}
+  <div class="row">
+    <div class="col s12">
+      <h2>{{course}}</h2>
+      {% for lesson in lessons %}
+        <div class="card-panel">
+          <h4>{{lesson.title}}</h4>
+          <p>{{lesson.description|truncatewords:'20'}}</p>
+          <a href="{% url 'courses:lesson' course.slug lesson.id %}">Acessar aula</a>
+        </div>
+      {% empty %}
+        <p class="flow-text">Nenhuma aula criada</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

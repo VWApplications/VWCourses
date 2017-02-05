@@ -1,6 +1,8 @@
 from django import forms
 from django.conf import settings
 from vwcourses.core.mail import send_email_template
+from .models import Comment
+
 
 class ContactCourseForm(forms.Form):
   name = forms.CharField(label='Nome', max_length=100)
@@ -16,3 +18,9 @@ class ContactCourseForm(forms.Form):
       'message': self.cleaned_data['message']
     }
     send_email_template(subject, template, context, [settings.CONTACT_EMAIL])
+
+
+class CommentForm(forms.ModelForm):
+  class Meta:
+    model = Comment
+    fields = ['comment']

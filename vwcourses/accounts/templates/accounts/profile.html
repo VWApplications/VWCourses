@@ -1,23 +1,32 @@
 {% extends 'core/base.html' %}
+{% load courses_tags %}
 {% load i18n %}
 {% block main %}
   <div class="row">
     <div class="nav-wrapper">
       <div class="col s12">
         {% block profile %}
-        <a href="{% url 'accounts:profile' %}" class="breadcrumb teal-text text-darken-4">{% trans 'My Profile' %}</a>
+          <a href="{% url 'accounts:profile' %}" class="breadcrumb teal-text text-darken-4">{% trans 'My Profile' %}</a>
         {% endblock %}
       </div>
     </div>
     <div class="col s4">
       <div class="card-panel">
         <ul class="collection with-header">
-          <li class="collection-header"><h4>{% trans 'My Courses' %}</h4></li>
-          <li class="collection-item"><a href="#">Curso 01</a></li>
-          <li class="collection-item"><a href="#">Curso 02</a></li>
-          <li class="collection-header"><h4>{% trans 'My Account' %}</h4></li>
-          <li class="collection-item"><a href="{% url 'accounts:edit' %}">{% trans 'Edit Account' %}</a></li>
-          <li class="collection-item"><a href="{% url 'accounts:edit_password' %}">{% trans 'Edit Password' %}</a></li>
+          {% load_my_courses user as enrollments %}
+          <li class="flow-text center-align black-gradient white-text">Bem vindo, {{user.name}}</li>
+          <li class="divider"></li>
+          {% block menu_options %}
+            <li class="collection-header center-align"><h4>{% trans 'My Courses' %}</h4></li>
+            {% for enrollment in enrollments %}
+            <li class="collection-item"><a href="{% url 'courses:announcements' enrollment.course.slug %}">{{enrollment.course}}</a></li>
+            {% empty %}
+              <li class="collection-item">{% trans 'There is no courses available' %}</li>
+            {% endfor %}
+            <li class="collection-header center-align"><h4>{% trans 'Account configuration' %}</h4></li>
+            <li class="collection-item"><a href="{% url 'accounts:edit' %}">{% trans 'Edit Account' %}</a></li>
+            <li class="collection-item"><a href="{% url 'accounts:edit_password' %}">{% trans 'Edit Password' %}</a></li>
+          {% endblock %}
         </ul>
       </div>
     </div>

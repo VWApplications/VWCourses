@@ -1,0 +1,40 @@
+<html>
+<title>Engenharia de Software</title>
+<meta charset="utf-8" />
+<xmp theme="readable">
+## admin.py
+***
+
+* Todas as models que for inserida aqui terá acesso a elas no site de adminstrador
+
+* O site de administrador é uma otima funcionalidades disponibilizada pelo django para você não precisar ficar criando todo o crud das models, o próprio django faz isso para você.
+
+* Primeiro temos que criar um superuser para acessar o site de administrador, colocando seu nome de usuário e senha
+
+    ```
+     python manage.py createsuperuser
+     python manage.py changepassword <user_name>
+    ```
+
+* Para acessar é só inserir a url **http://127.0.0.1:8000/admin/** e logar
+
+* Para inserir suas models no modo admin é só ir no arquivo **admin.py** do seu app importar suas models e inserir o seguinte código:
+
+    ```py
+      admin.site.register(<nomeDaModel>)
+    ```
+
+## Exemplo:
+
+```py
+from django.contrib import admin
+from .models import Album, Song
+
+admin.site.register(Song)
+admin.site.register(Album)
+```
+</xmp>
+<link rel="stylesheet" href="../../Static/readable.min.css">
+<link rel="stylesheet" href="../../Static/code.css">
+<script src="../../Static/strapdown.js"></script>
+</html>

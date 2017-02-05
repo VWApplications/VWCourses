@@ -15,6 +15,7 @@
       <div class="col s12 m7">
         <h4 class="header">Sobre o Curso</h4>
         {{course.description | linebreaks}}
+        <p><a href="{% url 'courses:enrollment' course.slug %}" class="btn">Inscreva-se</a></p>
       </div>
       <div class="col s12 m5">
         {% if course.image %}
