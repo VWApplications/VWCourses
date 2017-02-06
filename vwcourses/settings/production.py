@@ -26,7 +26,7 @@ SECRET_KEY = 'pikad1jf=uson@6m-ekoeaosowc6yti6sfojpy$=&god*)s(ot'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['vwcourses.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'vwcourses.core',
     'vwcourses.courses',
     'vwcourses.accounts',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -121,22 +122,24 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# Simplified static file serving.
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+# https://warehouse.python.org/project/whitenoise/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'Nome <victorhad@gmail.com>'
-EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'victorhad@gmail.com'
-EMAIL_HOST_PASSWORD = '****'
+EMAIL_HOST_PASSWORD = 'victorhad6531'
 EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "Victor Arnaud <victorhad@gmail.com>"
 CONTACT_EMAIL = 'victorhad@gmail.com'
 
 # AUTH
