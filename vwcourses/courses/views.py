@@ -130,3 +130,11 @@ def material(request, course_slug, material_id):
     return redirect(material.file.url)
   context = {'course': course, 'lesson': lesson, 'material': material}
   return render(request, template, context)
+
+@login_required
+@enrollment_required
+def information(request, course_slug):
+  template = 'courses/information.html'
+  course = request.course
+  context = {'course': course}
+  return render(request, template, context)

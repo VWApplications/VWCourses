@@ -1,0 +1,35 @@
+{% extends 'accounts/profile.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block title %}Detalhes do Curso{% endblock %}
+{% block profile %}
+  {{block.super}}
+  <a href="{% url 'courses:announcements' course.slug %}" class="breadcrumb teal-text text-darken-4">{{course}}</a>
+  <a href="{% url 'courses:information' course.slug %}" class="breadcrumb teal-text text-darken-4">Informações</a>
+{% endblock %}
+{% block menu_options %}
+  {% include 'courses/menu_options.html' %}
+  {{ block.super }}
+{% endblock %}
+{% block profile_content %}
+  <div class="container">
+    <div class="row">
+      <div class="col s12 card-panel grey lighten-2 z-depth-3">
+        <h4 class="header">Detalhes do curso {{course.name}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        {% if course.image %}
+        <img class="materialboxed img-details" width="100%" src="{{course.image.url}}" alt="{{course.name}}" />
+        {% else %}
+        <img class="materialboxed img-details" width="100%" src="{% static 'courses/img/default_img.png' %}" alt="{{course.name}}" />
+        {% endif %}
+      </div>
+      <div class="col s12">
+        <h4 class="header">Sobre o Curso</h4>
+        {{course.description | linebreaks}}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,8 +1,10 @@
 {% extends 'core/base.html' %}
 {% load i18n %}
 {% load staticfiles %}
-{% block css %}{% static 'courses/css/courses.css' %}{% endblock %}
-{% block title %}Lista de Cursos{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'courses/css/courses.css' %}">
+{% endblock %}
+{% block title %}Detalhes do Curso{% endblock %}
 {% block main %}
   <div class="container">
     <div class="row">
@@ -12,17 +14,17 @@
       </div>
     </div>
     <div class="row">
-      <div class="col s12 m7">
-        <h4 class="header">Sobre o Curso</h4>
-        {{course.description | linebreaks}}
-        <p><a href="{% url 'courses:enrollment' course.slug %}" class="btn">Inscreva-se</a></p>
-      </div>
-      <div class="col s12 m5">
+      <div class="col s12 m5 right">
         {% if course.image %}
         <img class="materialboxed img-details" width="100%" src="{{course.image.url}}" alt="{{course.name}}" />
         {% else %}
         <img class="materialboxed img-details" width="100%" src="{% static 'courses/img/default_img.png' %}" alt="{{course.name}}" />
         {% endif %}
+      </div>
+      <div class="col s12 m7">
+        <h4 class="header">Sobre o Curso</h4>
+        {{course.description | linebreaks}}
+        <p><a href="{% url 'courses:enrollment' course.slug %}" class="btn">Inscreva-se</a></p>
       </div>
     </div>
   </div>
@@ -31,7 +33,7 @@
     <form method="post" action="#">
       {% csrf_token %}
       <div class="row">
-        <div class="col s7">
+        <div class="col s12 m7">
           {{form.as_p}}
         </div>
       </div>

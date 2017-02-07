@@ -55,7 +55,7 @@ class Enrollment(models.Model):
     self.status = 1
     self.save()
 
-  def is_aproved(self):
+  def is_approved(self):
     return self.status == 1
 
   def __str__(self):

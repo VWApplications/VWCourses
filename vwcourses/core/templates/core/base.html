@@ -9,11 +9,11 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'core/core.css' %}">
-    <link rel="stylesheet" href="{% block css %}{% endblock %}">
+    {% block css %}{% endblock %}
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <script src="{% static 'core/core.js' %}"></script>
-    <script src="{% block js %}{% endblock %}"></script>
+    {% block js %}{% endblock %}
   </head>
   <body>
     <header>{% include 'core/navbar.html' %}</header>

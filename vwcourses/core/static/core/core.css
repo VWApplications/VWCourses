@@ -5,14 +5,6 @@
   background: -moz-linear-gradient(to right, black, #555);
   background: linear-gradient(to right, black, #555);
 }
-
-.center-block {
-  max-width: 500px;
-  margin: auto;
-  margin-top: 50px;
-}
-
-.color-white { color: white; }
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-18 { font-size: 18px; }
@@ -22,7 +14,4 @@
 nav .brand-logo { padding-left: 10px; }
 footer .input-field {color:white;}
 .parallax-size-header { height: 400px; }
-.parallax-size-footer { height: 100px; }
 footer.page-footer { margin-top: 0; }
-p {text-align: justify;}
-a.breadcrumb::before {color: teal; margin: -5px 10px 0 8px;}

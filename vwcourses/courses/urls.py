@@ -12,4 +12,5 @@ urlpatterns = [
   url(r'^(?P<course_slug>[\w_-]+)/aulas/$', views.lessons, name='lessons'),
   url(r'^(?P<course_slug>[\w_-]+)/aulas/(?P<lesson_id>[0-9]+)/$', views.lesson, name='lesson'),
   url(r'^(?P<course_slug>[\w_-]+)/materiais/(?P<material_id>[0-9]+)/$', views.material, name='material'),
+  url(r'^(?P<course_slug>[\w_-]+)/informacoes/$', views.information, name='information'),
 ]

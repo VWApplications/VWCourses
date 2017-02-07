@@ -8,7 +8,6 @@ User = get_user_model()
 
 
 class RegisterForm(forms.ModelForm):
-  email = forms.EmailField(label='E-mail')
   password1 = forms.CharField(label='Senha', widget=forms.PasswordInput)
   password2 = forms.CharField(label='Confirmação de senha', widget=forms.PasswordInput)
 

@@ -3,9 +3,9 @@
   <div class="row">
     <div class="col l4 s12">
       <h2 class="white-text">{% trans 'Contact' %}</h2>
-      <p class="grey-text text-lighten-4"><b>Endereço</b>: Brasília, DF</p>
-      <p class="grey-text text-lighten-4"><b>Email</b>: victorhad@gmail.com</p>
-      <p class="grey-text text-lighten-4"><b>Telefone</b>: (61) 9982-4945</p>
+      <p class="grey-text text-lighten-4"><b>Endereço</b>: {{user.address|default:_("Address not informed")}}</p>
+      <p class="grey-text text-lighten-4"><b>Email</b>: {{user.email}}</p>
+      <p class="grey-text text-lighten-4"><b>Telefone</b>: {{user.phone|default:_("Phone not informed")}}</p>
     </div><br />
     <div class="col l8 s12">
       <form>

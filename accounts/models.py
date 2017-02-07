@@ -4,6 +4,30 @@ from django.core import validators
 from django.conf import settings
 import re
 
+class Phone(models.Model):
+  DDD = models.IntegerField('DDD')
+  number = models.IntegerField('Número')
+
+  def __str__(self):
+    return "(%s) (%s)" % (self.DDD, self.number)
+
+  class Meta:
+    verbose_name = "Telefone"
+    verbose_name_plural = "Telefones"
+
+class Address(models.Model):
+  country = models.CharField('País', max_length=30)
+  city = models.CharField('Cidade', max_length=30)
+  state = models.CharField('Estado', max_length=30)
+  complement = models.CharField('Complemento', max_length=100, blank=True)
+
+  def __str__(self):
+    return "%s, %s" % (self.city, self.state)
+
+  class Meta:
+    verbose_name = "Endereço"
+    verbose_name_plural = "Endereços"
+
 class User(AbstractBaseUser, PermissionsMixin):
   username = models.CharField('Nome de Usuário', max_length=30, unique=True,
     help_text='O nome de usuário é um campo obrigatório de até 30 caracteres ou menos, entre eles letras e números',
@@ -16,7 +40,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     ]
   )
   email = models.EmailField('E-mail', unique=True)
-  name = models.CharField('Nome', max_length=100, blank=True)
+  name = models.CharField('Nome', max_length=30, blank=True)
+  phone = models.OneToOneField(Phone, on_delete=models.CASCADE, verbose_name="Telefone", null=True, blank=True)
+  address = models.OneToOneField(Address, on_delete=models.CASCADE, verbose_name="Endereço", null=True, blank=True)
   is_active = models.BooleanField('Está Ativo?', blank=True, default=True)
   is_staff = models.BooleanField('É administrador?', blank=True, default=False)
   date_joined = models.DateTimeField('Data de Cadastro', auto_now_add=True)

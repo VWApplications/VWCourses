@@ -1,7 +1,7 @@
 {% load i18n %}
-<li class="collection-header center-align"><h4>{{course}}</h4></li>
-<li class="collection-item"><a href="{% url 'courses:lessons' course.slug %}">{% trans 'Classes and Materials' %}</a></li>
-<li class="collection-item"><a href="#">{% trans 'Informations' %}</a></li>
-<li class="collection-item"><a href="{% url 'courses:announcements' course.slug %}">{% trans 'Ennouncements' %}</a></li>
-<li class="collection-item"><a href="#">{% trans 'Discussion Forum' %}</a></li>
-<li class="collection-item"><a href="{% url 'courses:cancel_enrollment' course.slug %}">{% trans 'Cancel Enrollment' %}</a></li>
+<li class="collection-header center-align grey lighten-3"><h4>{{course}}</h4></li>
+<li class="collection-item"><i class="material-icons left">video_library</i><a href="{% url 'courses:lessons' course.slug %}">{% trans 'Classes and Materials' %}</a></li>
+<li class="collection-item"><i class="material-icons left">description</i><a href="{% url 'courses:information' course.slug %}">{% trans 'Informations' %}</a></li>
+<li class="collection-item"><i class="material-icons left">announcement</i><a href="{% url 'courses:announcements' course.slug %}">{% trans 'Ennouncements' %}</a></li>
+<li class="collection-item"><i class="material-icons left">message</i><a href="{% url 'forum:index' %}">{% trans 'Discussion Forum' %}</a></li>
+<li class="collection-item"><i class="material-icons left">delete</i><a href="{% url 'courses:cancel_enrollment' course.slug %}">{% trans 'Cancel Enrollment' %}</a></li>
