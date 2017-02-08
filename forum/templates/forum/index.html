@@ -30,7 +30,7 @@
                 <div class="col m4">
                   <div class="chip">
                     <i class="close material-icons">turned_in</i>
-                    <a href="#">{{tag}}</a>
+                    <a href="{% url 'forum:index_tag' tag.slug %}">{{tag}}</a>
                   </div>
                 </div>
               {% empty %}
@@ -47,13 +47,13 @@
         <div class="divider"></div>
         {% for topic in object_list %}
           <div class="card-panel">
-            <h4><a href="#">{{topic.title}}</a></h4>
+            <h4><a href="{{topic.get_absolute_url}}">{{topic.title}}</a></h4>
             <p>Criado por {{topic.author}} | {{topic.answers}} resposta{{topic.answers|pluralize}} | {{topic.views}} Visualizaç{{topic.views|pluralize:"ão,ões"}}</p>
             <div class="row">
               <div class="col s6">
                 <p>Tags:
-                  {% for tag in topic.tags.all %}
-                    <a href="#">{{tag}}</a>{% if not forloop.last %},{% endif %}
+                  {% for tag in tags %}
+                  <a href="{% url 'forum:index_tag' tag.slug %}">{{tag}}</a>{% if not forloop.last %},{% endif %}
                   {% endfor %}
                 </p>
               </div>
