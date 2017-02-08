@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'vwcourses.core',
     'vwcourses.courses',
-    'vwcourses.accounts',
+    'accounts',
+    'forum',
+    'taggit',
     'storages',
 ]
 
