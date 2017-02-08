@@ -8,6 +8,7 @@ Django==1.10.5
 django-storages==1.5.2
 django-taggit==0.22.0
 django-toolbelt==0.0.1
+djangorestframework==3.5.3
 docutils==0.13.1
 gunicorn==19.6.0
 jmespath==0.9.1

@@ -3,9 +3,13 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 from django.contrib.auth.decorators import login_required
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 from vwcourses.courses.models import Enrollment
 from .forms import RegisterForm, EditAccountForm, PasswordResetForm
-from .models import PasswordReset
+from .models import PasswordReset, User
+from .serializers import UserSerializer
 
 
 def register(request):
@@ -79,3 +83,11 @@ def edit_password(request):
     return redirect('accounts:login')
   context['form'] = form
   return render(request, template, context)
+
+
+class UserList(APIView):
+
+  def get(self, request, *args, **kwargs):
+    users = User.objects.all()
+    serializer = UserSerializer(users, many=True)
+    return Response(serializer.data)

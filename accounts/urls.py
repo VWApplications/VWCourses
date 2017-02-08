@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from django.contrib.auth.views import login, logout
+from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 
 app_name = 'accounts'
@@ -11,5 +12,8 @@ urlpatterns = [
   url(r'^editar/$', views.edit, name="edit"),
   url(r'^editar-senha/$', views.edit_password, name="edit_password"),
   url(r'^resetar-senha/$', views.reset_password, name="reset_password"),
-  url(r'^confirmar-nova-senha/(?P<key>\w+)/$', views.reset_password_confirm, name="reset_password_confirm")
+  url(r'^confirmar-nova-senha/(?P<key>\w+)/$', views.reset_password_confirm, name="reset_password_confirm"),
+  url(r'^users.json', views.UserList.as_view(), name="user_json")
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
