@@ -7,7 +7,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('vwcourses.core.urls')),
     url(r'^cursos/', include('vwcourses.courses.urls')),
-    url(r'^conta/', include('vwcourses.accounts.urls')),
+    url(r'^conta/', include('accounts.urls')),
+    url(r'^forum/', include('forum.urls')),
 ]
 
 if settings.DEBUG:

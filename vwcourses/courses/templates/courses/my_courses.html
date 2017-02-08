@@ -1,0 +1,7 @@
+{% load i18n %}
+<li class="collection-header center-align grey lighten-3"><h4>{% trans 'My Courses' %}</h4></li>
+{% for enrollment in enrollments %}
+<li class="collection-item"><i class="material-icons left">school</i><a href="{% url 'courses:announcements' enrollment.course.slug %}">{{enrollment.course}}</a></li>
+{% empty %}
+  <li class="collection-item">{% trans 'There is no courses available' %}</li>
+{% endfor %}

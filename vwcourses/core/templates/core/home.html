@@ -9,12 +9,14 @@
     <div class="parallax"><img src="http://www.iescamp.com.br/files/imagens/noticias/outros.jpg" /></div>
     <div class="container">
       <h1>Plataforma de ensino a distância</h1>
-      <p class="flow-text">O VWCourses visa simplificar o ensino a distância, provendo ferramentas com o objetivo de facilitar o curso a distância</p>
-      <a class="waves-effect waves-light btn"><i class="material-icons left">loyalty</i>{% trans 'Know more' %}</a>
+      <p class="flow-text"><b>O VWCourses visa simplificar o ensino a distância, provendo ferramentas com o objetivo de facilitar o curso a distância</b></p>
+      {% if not user.is_authenticated %}
+        <a class="waves-effect waves-light btn" href="{% url 'accounts:register' %}"><i class="material-icons left">loyalty</i>{% trans 'Register' %}</a>
+      {% endif %}
     </div>
   </div>
   <div class="container">
-    <div class="row" id="courses">
+    <div class="row">
       <div class="col s12 m12">
         <div class="row">
           <div class="col s12 l5"><br />
@@ -23,7 +25,7 @@
           <div class="col s12 l7">
             <h4 class="header">Cursos</h4>
             <p class="flow-text">Conheça todos os cursos disponibilizados</p>
-            <a class="waves-effect waves-light btn" href="{% url 'courses:index' %}"><i class="material-icons left">loyalty</i>{% trans 'Know more' %}</a>
+            <a class="waves-effect waves-light btn" href="{% url 'courses:index' %}"><i class="material-icons left">loyalty</i>{% trans 'Go to courses' %}</a>
           </div>
         </div>
       </div>
@@ -32,13 +34,13 @@
     <div class="row">
       <div class="col s12 m12">
         <div class="row">
-          <div class="col s12 m7">
-            <h4 class="header">Outros</h4>
-            <p class="flow-text">Conheça todos os cursos disponibilizados</p>
-            <a class="waves-effect waves-light btn"><i class="material-icons left">loyalty</i>{% trans 'Know more' %}</a>
-          </div>
-          <div class="col s12 m5">
+          <div class="col s12 m5 right">
             <img class="materialboxed" width="100%" src="http://images.freeimages.com/images/previews/8ef/livro-1491964.jpg" />
+          </div>
+          <div class="col s12 m7">
+            <h4 class="header">Forum</h4>
+            <p class="flow-text">Veja perguntas e repostas dos cursos no nosso forum de discussão</p>
+            <a class="waves-effect waves-light btn" href="{% url 'forum:index' %}"><i class="material-icons left">loyalty</i>{% trans 'Go to forum' %}</a>
           </div>
         </div>
       </div>

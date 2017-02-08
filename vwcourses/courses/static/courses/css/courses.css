@@ -9,3 +9,7 @@ img {
 p {
   text-align: justify;
 }
+
+a.breadcrumb::before {
+  color: teal; margin: -5px 10px 0 8px;
+}

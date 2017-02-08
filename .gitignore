@@ -87,3 +87,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Ignore the local settings on production
+vwcourses/settings/local.py
+media
+static
